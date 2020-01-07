@@ -15,4 +15,6 @@ Installer TomcatServer 9.0
 3-Dans l'url du navigateur internet, entrer la commande suivante :  http://localhost:8080/GestionEcole3
 
 
+Des problèmes ont également été rencontrés lors de la création du fichier "persistence.xml" pour la création automatisé des tables dans la base de données.
+
 
