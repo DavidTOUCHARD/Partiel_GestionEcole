@@ -1,8 +1,9 @@
 # Partiel_GestionEcole
 
 
-L'application fonctionne en mode console mais des problèmes ont été rencontrés lors de la création de l'application Web.
+L'application fonctionne en mode console mais des problèmes ont été rencontrés lors de l'utilisation des servlet dans l'application Web.
 Après création des JSP et Servlet, aucune fonctionnalité n'est opérationnelle.
+En mode console, l'ensemble des fonctionnalités semble fonctionner
 
 Installation :
 Installer XAMPP : https://www.apachefriends.org/fr/download.html
