@@ -23,8 +23,8 @@ public class ResponsableDao implements IResponsableDao {
 		ConnectionDao cd = new ConnectionDao();
 		cd.connection();
 		try {
-			String sql = "SELECT `nom`, `password` FROM `directeur` WHERE nom = '" + responsable.nom
-					+ "' and password = '" + responsable.password + "';";
+			String sql = "SELECT `nom`, `password` FROM `directeur` WHERE nom = '" + responsable.getNom()
+					+ "' and password = '" + responsable.getPassword() + "';";
 			ResultSet rs = cd.stat.executeQuery(sql);
 			while (rs.next()) {
 				String resp = rs.getString("nom") + rs.getString("password");
@@ -46,8 +46,8 @@ public class ResponsableDao implements IResponsableDao {
 		cd.connection();
 		try {
 			String sql = "INSERT INTO `etudiant` (`nom`,`prenom`,`mail`,`adresse`,`telephone`,`datenaissance`) VALUES ('"
-					+ etudiant.nom + "','" + etudiant.prenom + "','" + etudiant.mail + "','" + etudiant.adresse + "','"
-					+ etudiant.tel + "','" + etudiant.datenaissance + "');";
+					+ etudiant.getNom() + "','" + etudiant.getPrenom() + "','" + etudiant.getMail() + "','"
+					+ etudiant.getAdresse() + "','" + etudiant.getTel() + "','" + etudiant.getDatenaissance() + "');";
 			cd.stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -124,8 +124,9 @@ public class ResponsableDao implements IResponsableDao {
 		ConnectionDao cd = new ConnectionDao();
 		cd.connection();
 		try {
-			String sql = "UPDATE `etudiant` set mail = '" + etudiant.mail + "',adresse = '" + etudiant.adresse
-					+ "', telephone = '" + etudiant.tel + "' WHERE nom = '" + nom + "' and prenom = '" + prenom + "' ;";
+			String sql = "UPDATE `etudiant` set mail = '" + etudiant.getMail() + "',adresse = '" + etudiant.getAdresse()
+					+ "', telephone = '" + etudiant.getTel() + "' WHERE nom = '" + nom + "' and prenom = '" + prenom
+					+ "' ;";
 			cd.stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -33,7 +33,7 @@ public class ResponsableServiceTest extends TestCase {
 		Etudiant etudiant = new Etudiant("TOUCHARD", "David", null, null, null, null);
 		IResponsableService respServ = new ResponsableService();
 		respServ.ajouterEtudiant(etudiant);
-		TestCase.assertEquals("TOUCHARD", etudiant.nom);
+		TestCase.assertEquals("TOUCHARD", etudiant.getNom());
 	}
 
 	@Test
@@ -42,8 +42,8 @@ public class ResponsableServiceTest extends TestCase {
 		responsabledao.ajouterEtudiant(etudiant);
 		boolean test = Mockito.verify(responsabledao, Mockito.times(1)).ajouterEtudiant(etudiant);
 
-		Mockito.when(responsabledao.ajouterEtudiant(etudiant))
-				.thenReturn(new Etudiant("Docteur", "HOUSE", null, null, null, null));
+		Mockito.when(responsabledao.ajouterEtudiant(etudiant));
+		Mockito.doReturn(new Etudiant("Docteur", "HOUSE", null, null, null, null));
 	}
 
 }

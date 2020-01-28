@@ -1,13 +1,21 @@
 package fr.ensup.gestionecole.domaine;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Responsable {
 
-	public String nom;
-	public String prenom;
-	public String tel;
-	public String adresse;
-	public String mail;
-	public String password;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private String nom;
+	private String prenom;
+	private String tel;
+	private String adresse;
+	private String mail;
+	private String password;
 
 	public Responsable() {
 		// TODO Auto-generated constructor stub
@@ -16,7 +24,7 @@ public class Responsable {
 	public Responsable(String nom, String password) {
 		super();
 		this.nom = nom;
-		this.password = password;
+		this.setPassword(password);
 	}
 
 	public Responsable(String nom, String prenom, String tel, String adresse, String mail, String password) {
@@ -26,7 +34,7 @@ public class Responsable {
 		this.tel = tel;
 		this.adresse = adresse;
 		this.mail = mail;
-		this.password = password;
+		this.setPassword(password);
 	}
 
 	public String getAdresse() {
@@ -72,7 +80,15 @@ public class Responsable {
 	@Override
 	public String toString() {
 		return "Responsable [nom=" + nom + ", prenom=" + prenom + ", tel=" + tel + ", adresse=" + adresse + ", mail="
-				+ mail + ", password=" + password + "]";
+				+ mail + ", password=" + getPassword() + "]";
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
