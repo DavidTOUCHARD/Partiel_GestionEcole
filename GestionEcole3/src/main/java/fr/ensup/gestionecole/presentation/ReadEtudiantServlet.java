@@ -2,22 +2,29 @@ package fr.ensup.gestionecole.presentation;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.ensup.gestionecole.domaine.Etudiant;
+import fr.ensup.gestionecole.service.ResponsableService;
+
 /**
- * Servlet implementation class LectureEtudiantServlet
+ * Servlet implementation class ReadEtudiantServlet
  */
-public class LectureEtudiantServlet extends HttpServlet {
+@WebServlet("/ReadEtudiantServlet")
+public class ReadEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LectureEtudiantServlet() {
+	ResponsableService respServ = new ResponsableService();
+	Etudiant etudiant;
+
+	public ReadEtudiantServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -29,7 +36,10 @@ public class LectureEtudiantServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String recherche = request.getParameter("student-search");
+		System.out.println("recherche : " + recherche);
 	}
 
 	/**
@@ -40,13 +50,16 @@ public class LectureEtudiantServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		System.out.println("recherche dans le doPost : " + nom);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("LectureEtudiant.jsp");
+		if (request.getParameter("button1") != null) {
 
-		// inclusion de cette ressource
-		requestDispatcher.include(request, response);
-
-		// doGet(request, response);
+			etudiant = respServ.lireEtudiant(nom, prenom);
+			System.out.println(etudiant);
+		}
+		doGet(request, response);
 	}
 
 }

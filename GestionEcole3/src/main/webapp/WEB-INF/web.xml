@@ -12,11 +12,8 @@
   	<servlet-class>fr.ensup.gestionecole.presentation.Inscription</servlet-class>
   </servlet>
   <servlet>
-  	<description>
-  	</description>
-  	<display-name>LectureEtudiantServlet</display-name>
-  	<servlet-name>LectureEtudiantServlet</servlet-name>
-  	<servlet-class>fr.ensup.gestionecole.presentation.LectureEtudiantServlet</servlet-class>
+  	<servlet-name>ReadEtudiant</servlet-name>
+  	<servlet-class>fr.ensup.gestionecole.presentation.ReadEtudiantServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>AddEtudiantServlet</servlet-name>
@@ -27,8 +24,8 @@
   	<url-pattern>/Inscription</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>LectureEtudiantServlet</servlet-name>
-  	<url-pattern>/LectureEtudiantServlet</url-pattern>
+  	<servlet-name>ReadEtudiant</servlet-name>
+  	<url-pattern>/ReadEtudiant</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

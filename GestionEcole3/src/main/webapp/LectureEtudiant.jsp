@@ -7,9 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<label for="site-search">Search the site:</label>
-<!-- <input type="search" id="site-search" name="q" -->
-<!--        aria-label="Search through site content"> -->
-       <input type="submit" value="Rechercher">
+<form action ="ReadEtudiantServlet" method="post">
+<label for="site-search">Rechercher un étudiant:</label>
+<input type="search" id="nom" name="nom"
+       aria-label="Rechercher un étudiant">
+<input type="search" id="prenom" name="prenom"
+aria-label="Rechercher un étudiant">
+       <input type="submit" value="Rechercher" name="button1">
+</form>
 </body>
 </html>

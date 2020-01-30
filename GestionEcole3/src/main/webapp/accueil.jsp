@@ -14,7 +14,7 @@
 <h1> </h1>
 <input type="button" value="Associer un étudiant à un cours">
 <h1> </h1>
-<input type="button" value="Lire les informations d'un étudiant">
+<input type="button" value="Lire les informations d'un étudiant" onclick="document.location.href='LectureEtudiant.jsp';">
 <h1> </h1>
 <input type="button" value="Modifier les informations d'un étudiant">
 <h1> </h1>

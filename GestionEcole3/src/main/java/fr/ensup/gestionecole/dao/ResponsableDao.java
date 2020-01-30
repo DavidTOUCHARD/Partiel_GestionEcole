@@ -71,14 +71,13 @@ public class ResponsableDao implements IResponsableDao {
 		try {
 			String sql = "SELECT * FROM `etudiant` WHERE nom = '" + nom + "' and prenom = '" + prenom + "';";
 			rs = cd.stat.executeQuery(sql);
-			String id = rs.getString("idEtudiant");
+			String id = rs.getString("identifiant");
 			String Nom = rs.getString("nom");
 			String Prenom = rs.getString("prenom");
 			String email = rs.getString("email");
 			String tel = rs.getString("telephone");
 			String datenaissance = rs.getString("datenaissance");
 			etudiant = new Etudiant(id, Nom, Prenom, email, tel, datenaissance);
-			// System.out.println(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
