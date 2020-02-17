@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="fr.ensup.gestionecole.domaine.Responsable"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,14 @@
 <title>Gestion de l'école ENSUP</title>
 </head>
 <body>
+<%
+Responsable resp = (Responsable) session.getAttribute("responsable");
+%>
+<h1>Information responsable </h1>
+<ul>
+<li>Login : <%=resp.getNom()%></li>
+<li>Password : <%=resp.getPrenom()%> </li>
+</ul>
 <h1> GESTION DE L'ECOLE ENSUP </h1>
 <h1> </h1>
 <h1> </h1>

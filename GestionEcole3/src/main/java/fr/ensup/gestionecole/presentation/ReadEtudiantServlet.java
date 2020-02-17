@@ -38,8 +38,8 @@ public class ReadEtudiantServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String recherche = request.getParameter("student-search");
-		System.out.println("recherche : " + recherche);
+		// String recherche = request.getParameter("student-search");
+		// System.out.println("recherche : " + recherche);
 	}
 
 	/**
@@ -50,14 +50,13 @@ public class ReadEtudiantServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		System.out.println("recherche dans le doPost : " + nom);
-
 		if (request.getParameter("button1") != null) {
+			String nom = request.getParameter("nom");
+			String prenom = request.getParameter("prenom");
+			System.out.println("recherche dans le doPost : " + nom + " " + prenom);
 
 			etudiant = respServ.lireEtudiant(nom, prenom);
-			System.out.println(etudiant);
+			System.out.println("l'etudiant est : " + etudiant);
 		}
 		doGet(request, response);
 	}

@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.ensup.gestionecole.domaine.Responsable;
+import fr.ensup.gestionecole.service.ResponsableService;
 
 /**
  * Servlet implementation class Connection
@@ -23,6 +25,8 @@ public class Connection extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	ResponsableService respServ = new ResponsableService();
+
 	public Connection() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,9 +40,9 @@ public class Connection extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String idConseiller = request.getParameter("id");
+		String idResponsable = request.getParameter("id");
 
-		if (!idConseiller.isEmpty()) {
+		if (!idResponsable.isEmpty()) {
 			// request.setAttribute("id", idConseiller);
 			// request.setAttribute("listePersonne", new
 			// ConseillerDao().listeDesClients());
@@ -63,8 +67,8 @@ public class Connection extends HttpServlet {
 		String pwd = request.getParameter("mdpuser");
 
 		Responsable responsable = new Responsable();
-		Responsable r = new Responsable("nom", "prenom", null, null, null, null);
-
+		Responsable r = new Responsable(login, pwd, null, null, null, null);
+		respServ.lireEtudiant("TOUCHARD", "David");
 		List<Responsable> responsableList = new ArrayList<Responsable>();
 
 		// conseillerList = Login.loginConseiller(login, pwd);
@@ -74,7 +78,10 @@ public class Connection extends HttpServlet {
 			// request.setAttribute("listePersonne", new
 			// ConseillerDao().listeDesClients());
 			RequestDispatcher rs = request.getRequestDispatcher("accueil.jsp");
+			HttpSession maSession = request.getSession();
+			maSession.setAttribute("responsable", r);
 			rs.forward(request, response);
+
 		} else {
 
 			RequestDispatcher rs = request.getRequestDispatcher("error.jsp");

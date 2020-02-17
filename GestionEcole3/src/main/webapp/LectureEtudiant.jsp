@@ -13,7 +13,7 @@
        aria-label="Rechercher un étudiant">
 <input type="search" id="prenom" name="prenom"
 aria-label="Rechercher un étudiant">
-       <input type="submit" value="Rechercher" name="button1">
+       <input type="submit" value="Rechercher" name="button1" onclick="callServlet();">
 </form>
 </body>
 </html>

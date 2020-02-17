@@ -2,6 +2,7 @@ package fr.ensup.gestionecole.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,23 +66,43 @@ public class ResponsableDao implements IResponsableDao {
 	public Etudiant lireEtudiant(String nom, String prenom) {
 		// TODO Auto-generated method stub
 		ConnectionDao cd = new ConnectionDao();
-		Etudiant etudiant = null;
+		Etudiant etudiant = new Etudiant();
 		ResultSet rs;
 		cd.connection();
+		Statement stm = null;
 		try {
-			String sql = "SELECT * FROM `etudiant` WHERE nom = '" + nom + "' and prenom = '" + prenom + "';";
-			rs = cd.stat.executeQuery(sql);
-			String id = rs.getString("identifiant");
-			String Nom = rs.getString("nom");
-			String Prenom = rs.getString("prenom");
-			String email = rs.getString("email");
-			String tel = rs.getString("telephone");
-			String datenaissance = rs.getString("datenaissance");
-			etudiant = new Etudiant(id, Nom, Prenom, email, tel, datenaissance);
+			stm = cd.connection().createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		String Nom = null;
+		String Prenom = null;
+		String email = null;
+		String tel = null;
+		String adresse = null;
+		String datenaissance = null;
+		try {
+			String sql = "SELECT * FROM `etudiant` WHERE nom = '" + nom + "' and prenom = '" + prenom + "'";
+			rs = stm.executeQuery(sql);
+			// String id = rs.getString("identifiant");
+			// Nom = rs.getString("nom");
+			// Prenom = rs.getString("prenom");
+			// email = rs.getString("mail");
+			// tel = rs.getString("telephone");
+			// adresse = rs.getString("adresse");
+			// datenaissance = rs.getString("datenaissance");
+			if (rs.first()) {
+				etudiant = new Etudiant(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"),
+						rs.getString("adresse"), rs.getString("telephone"), rs.getString("datenaissance"));
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		cd.deconnection();
+
 		return etudiant;
 	}
 
